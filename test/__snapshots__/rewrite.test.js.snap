@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rewrite commonjs imports "import * as React from 'react'" 1`] = `
+"import $viteCjsImport0_react from \\"/@modules/react/index.js\\";
+const React = $viteCjsImport0_react;"
+`;
+
+exports[`rewrite commonjs imports "import { default as Default } from 'react'" 1`] = `
+"import $viteCjsImport0_react from \\"/@modules/react/index.js\\";
+const Default = $viteCjsImport0_react;"
+`;
+
+exports[`rewrite commonjs imports "import { default as Default, useEffect } from 'react'" 1`] = `
+"import $viteCjsImport0_react from \\"/@modules/react/index.js\\";
+const Default = $viteCjsImport0_react;
+const useEffect = $viteCjsImport0_react[\\"useEffect\\"];"
+`;
+
+exports[`rewrite commonjs imports "import { useState } from 'react'" 1`] = `
+"import $viteCjsImport0_react from \\"/@modules/react/index.js\\";
+const useState = $viteCjsImport0_react[\\"useState\\"];"
+`;
+
+exports[`rewrite commonjs imports "import { useState as something } from 'react'" 1`] = `
+"import $viteCjsImport0_react from \\"/@modules/react/index.js\\";
+const something = $viteCjsImport0_react[\\"useState\\"];"
+`;
+
+exports[`rewrite commonjs imports "import { useState as something, useEffect } from 'react'" 1`] = `
+"import $viteCjsImport0_react from \\"/@modules/react/index.js\\";
+const something = $viteCjsImport0_react[\\"useState\\"];
+const useEffect = $viteCjsImport0_react[\\"useEffect\\"];"
+`;
+
+exports[`rewrite commonjs imports "import { useState as something, useEffect as alias } from 'react'" 1`] = `
+"import $viteCjsImport0_react from \\"/@modules/react/index.js\\";
+const something = $viteCjsImport0_react[\\"useState\\"];
+const alias = $viteCjsImport0_react[\\"useEffect\\"];"
+`;
+
+exports[`rewrite commonjs imports "import { useState, useEffect } from 'react'" 1`] = `
+"import $viteCjsImport0_react from \\"/@modules/react/index.js\\";
+const useState = $viteCjsImport0_react[\\"useState\\"];
+const useEffect = $viteCjsImport0_react[\\"useEffect\\"];"
+`;
+
+exports[`rewrite commonjs imports "import React from 'react'" 1`] = `
+"import $viteCjsImport0_react from \\"/@modules/react/index.js\\";
+const React = $viteCjsImport0_react;"
+`;
+
+exports[`rewrite commonjs imports "import React, { useState } from 'react'" 1`] = `
+"import $viteCjsImport0_react from \\"/@modules/react/index.js\\";
+const React = $viteCjsImport0_react;
+const useState = $viteCjsImport0_react[\\"useState\\"];"
+`;

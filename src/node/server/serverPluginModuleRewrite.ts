@@ -193,28 +193,29 @@ export function rewriteImports(
             timestamp
           )
 
-          if (resolved !== id) {
+          if (isOptimizedCjs(root, id)) {
             debug(`    "${id}" --> "${resolved}"`)
-            if (isOptimizedCjs(root, id)) {
-              if (dynamicIndex === -1) {
-                const exp = source.substring(expStart, expEnd)
-                const replacement = transformCjsImport(exp, id, resolved, i)
-                s.overwrite(expStart, expEnd, replacement)
-              } else if (hasLiteralDynamicId) {
-                // rewrite `import('package')`
-                s.overwrite(
-                  dynamicIndex,
-                  end + 1,
-                  `import('${resolved}').then(m=>m.default)`
-                )
-              }
-            } else {
+            if (dynamicIndex === -1) {
+              const exp = source.substring(expStart, expEnd)
+              const replacement = transformCjsImport(exp, id, resolved, i)
+              s.overwrite(expStart, expEnd, replacement)
+            } else if (hasLiteralDynamicId) {
+              // rewrite `import('package')`
               s.overwrite(
-                start,
-                end,
-                hasLiteralDynamicId ? `'${resolved}'` : resolved
+                dynamicIndex,
+                end + 1,
+                `import('${resolved}').then(m=>m.default)`
               )
             }
+          } else if (resolved !== id) {
+            debug(`    "${id}" --> "${resolved}"`)
+
+            s.overwrite(
+              start,
+              end,
+              hasLiteralDynamicId ? `'${resolved}'` : resolved
+            )
+
             hasReplaced = true
           }
 
@@ -358,7 +359,7 @@ function isOptimizedCjs(root: string, id: string) {
   return !!analysis.isCommonjs[id]
 }
 
-function transformCjsImport(
+export function transformCjsImport(
   exp: string,
   id: string,
   resolvedPath: string,
