@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-dist
+playground/dist
 dist-ssr
 TODOs.md
 *.log
